@@ -46,25 +46,25 @@ describe("tipeTransaksi.get function", () => {
     })
 })
 
-// describe("tipeTransaksi.getByID function", () => {
-//     test("res.json called with users data", async () => {
-//         const req = mockRequest({}, {
-//             params:1
-//         })
-//         const res = mockResponse()
-//         await base.get(req, res)
-//         expect(res.status).toBeCalledWith(200)
-//         expect(res.json).toBeCalledWith(
-//             expect.objectContaining({
-//                 status: 'success',
-//                 code:200,
-//                 message:"Success!",
-//                 data: expect.any(Array)
-//                 //return nya array bebas, ga harus ada isi 
-//             })
-//         )
-//     })
-// })
+describe("tipeTransaksi.getByID function", () => {
+    test("res.json called with users data", async () => {
+        const req = mockRequest({}, {
+            params:1
+        })
+        const res = mockResponse()
+        await base.get(req, res)
+        expect(res.status).toBeCalledWith(200)
+        expect(res.json).toBeCalledWith(
+            expect.objectContaining({
+                status: 'success',
+                code:200,
+                message:"Success!",
+                data: expect.any(Array)
+                //return nya array bebas, ga harus ada isi 
+            })
+        )
+    })
+})
 
 describe("tipeTransaksi.destroy function", () => {
     test("res.json called with users data", async () => {

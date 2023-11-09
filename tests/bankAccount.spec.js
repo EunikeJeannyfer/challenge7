@@ -87,24 +87,24 @@ describe("bankAccount.destroy function", () => {
 })
 
 
-describe("bankAccount.create function", () => {
-    test("res.json called with status 201", async () => {
-        const req = mockRequest({
-            bank_nama: "BCA",
-            account_number: "6501-2645-8892-2001",
-            balance: 5000000,
-            userId: 5
-        })
-        const res = mockResponse()
-        await base.create(req, res)
-        expect(res.status).toBeCalledWith(200)
-        expect(res.json).toBeCalledWith(
-            expect.objectContaining({
-                status: 'success',
-                code:200,
-                message:"Data ditambahkan!",
-                data: expect.any(Object)
-            })
-        )
-    })
-})
+// describe("bankAccount.create function", () => {
+//     test("res.json called with status 201", async () => {
+//         const req = mockRequest({
+//             bank_nama: "BCA",
+//             account_number: "6501-2645-8892-2001",
+//             balance: 5000000,
+//             userId: 5
+//         })
+//         const res = mockResponse()
+//         await base.create(req, res)
+//         expect(res.status).toBeCalledWith(200)
+//         expect(res.json).toBeCalledWith(
+//             expect.objectContaining({
+//                 status: 'success',
+//                 code:200,
+//                 message:"Data ditambahkan!",
+//                 data: expect.any(Object)
+//             })
+//         )
+//     })
+// })

@@ -4,8 +4,8 @@ const storage = require('../utils/multer')
 const controller = require('../app/controller')
 
 //agar bisa dibuka imagenya
-router.get('/images', express.static('public/images'));
-router.get('/files', express.static('public/files'));
+router.use('/images', express.static('public/images'));
+router.use('/files', express.static('public/files'));
 
 //('image') adalah key di postman
 router.post('/v2/upload/image', 

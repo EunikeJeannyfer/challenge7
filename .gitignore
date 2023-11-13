@@ -2,3 +2,4 @@
 # nnt org-org bs download package sesuai package.json pake npm i / pnpm i
 node_modules
 coverage
+.env

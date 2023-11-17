@@ -26,6 +26,7 @@ model Profile {
   identity_type String
   identity_number Int
   address String
+  picture String?
   user User @relation(fields: [userId], references: [id])
   userId Int @unique
   //1:1 wajib unique

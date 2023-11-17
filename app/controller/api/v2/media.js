@@ -46,7 +46,6 @@ module.exports = {
         res.setHeader("Content-Type", "image/png")
         qrCode.pipe(res);
     },
-
     imagekitUpload: async(req, res) => {
         try {
             // mengubah file menjadi string dengan encoding base64

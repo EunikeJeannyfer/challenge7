@@ -77,8 +77,6 @@ module.exports = {
             }
         });
 
-        
-
         res.status(201).json({ 
             status: 'success', 
             code: 200, 

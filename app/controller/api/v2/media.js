@@ -2,6 +2,7 @@ const { PrismaClient } = require('@prisma/client')
 const prisma = new PrismaClient();
 const qr = require('node-qr-image');
 const imagekit = require('../../../../utils/imagekit');
+const profile = require('./profile');
 
 module.exports = {
     uploadImage: async (req, res) => {
@@ -70,5 +71,5 @@ module.exports = {
         } catch(err) {
             throw err;
         }
-    }
+    }   
 }

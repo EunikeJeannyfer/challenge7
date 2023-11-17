@@ -57,7 +57,16 @@ module.exports = {
 
         const createUser = await prisma.user.create({
             data:{
-            email, nama, password: await encryptPassword(password)
+                nama: req.body.nama,
+                email: req.body.email,
+                password: await encryptPassword(req.body.password),
+                profile:{
+                    create: {
+                        identity_type: req.body.identity_type,
+                        identity_number: req.body.identity_number,
+                        address: req.body.address,
+                    }
+                }
             }
         })
 

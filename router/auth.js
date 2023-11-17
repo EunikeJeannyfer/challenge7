@@ -11,7 +11,6 @@ router.post('/v2/auth/login', controller.auth.login)
 router.post('/v2/auth/register', controller.auth.register)
 router.get('/v2/auth/whoami',auth, controller.auth.whoami)
 
-
 //view
 router.get('/register', (req, res) => {
     res.render('register.ejs')

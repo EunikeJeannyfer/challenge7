@@ -19,7 +19,6 @@ router.post('/v2/upload/document',
         storage.document.single('document'),
         controller.media.uploadDocument)
 
-
 //QR-CODE
 router.post('/v2/qrcode', controller.media.qrcode)
 
@@ -28,4 +27,14 @@ router.post('/v2/upload/imagekit',
         multer.single('image'),
         controller.media.imagekitUpload
 )
+router.post('/v2/upload/imagekit/:id',
+        multer.single('image'),
+        controller.media.imagekitUpdate
+)
+router.post('/v2/upload/registerwithpicture',
+        multer.single('image'),
+        controller.media.registerWithPicture
+)
+router.delete('/v2/upload/deleteimage/:id', controller.media.destroy)
+
 module.exports = router;

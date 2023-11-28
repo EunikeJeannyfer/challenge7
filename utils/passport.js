@@ -7,7 +7,7 @@ const { authUser } = require('../app/controller/api/v2/auth')
 
 passport.serializeUser((user, done) => done(null, user.id ))
 passport.deserializeUser(async(id, done) => {
-    done(null, await prisma.user.findUnique({where: id}))
+    done(null, await prisma.user.findUnique({where: {id: id}}))
 })
 
 passport.use(new LocalStrategy ({

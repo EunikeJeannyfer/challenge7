@@ -39,6 +39,28 @@ module.exports = {
             data: { user, token }
         })
     },
+    async getTokenFromEmail(req, res){
+        const {email} = req.body;
+
+        const user = await prisma.user.findFirst({
+            where: { email }
+        })
+
+        if(!user){
+            return res.status(404).json({
+                status: "Fail!",
+                message: "Email tidak ditemukan!"
+            })
+        }
+        
+        const token = await JWTsign(user)
+
+        return res.status(201).json({
+            status: "Success!",
+            message: "Berhasil Login!",
+            data: { user, token }
+        })
+    },
     async register(req, res){
         //coba buat fungsi register dengan menganti password 
         //dari req.body dengan password yang sudah terinkripsi

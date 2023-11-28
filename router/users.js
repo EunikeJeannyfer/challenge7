@@ -18,7 +18,7 @@ router.put('/users/:id', controller.users.update)
 router.get('/v2/users', controller.usersV2.get)
 router.get('/v2/users/:id', controller.usersV2.getById)
 router.put('/v2/users/:id', controller.usersV2.update)
-router.post('/v2/users', auth, controller.usersV2.create)
+router.post('/v2/users', controller.usersV2.create)
 router.delete('/v2/users/:id', controller.usersV2.destroy)
 
 router.put('/v2/profile/:id', controller.profile.update)

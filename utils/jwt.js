@@ -1,7 +1,10 @@
 const jwt = require('jsonwebtoken')
 let { JWT_SECRET_KEY } = process.env;
+
+
 async function auth(req, res, next) {
     const { authorization } = req.headers
+    console.log(authorization)
     if(!authorization){
         return res.status(401).json({
             status: 'failed',
@@ -10,6 +13,7 @@ async function auth(req, res, next) {
         })
     }
     jwt.verify(authorization, JWT_SECRET_KEY, (err, decoded) => {
+        console.log(authorization)
         if(err){
             return res.status(401).json({
                 status: 'failed',

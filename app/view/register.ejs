@@ -24,8 +24,9 @@
 <script src="/socket.io/socket.io.js" charset="utf-8"></script>
 <script type="text/javascript">
     var io = io()
-    socket.on('registrationSuccess', (data) => {
-        alert(data.message)
-    });
+    io.on('notification', function(data) {
+        console.log(data)
+        alert(data)
+    })
 
 </script>

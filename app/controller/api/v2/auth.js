@@ -7,6 +7,7 @@ const prisma = new PrismaClient();
 
 module.exports = {
     async login(req, res){
+        req.io.emit('notification', 'Berhasil Login')
         const {email, password} = req.body;
 
         const user = await prisma.user.findFirst({
@@ -91,12 +92,12 @@ module.exports = {
                 }
             }
         })
-
+        req.io.emit('notification', 'Berhasil Register')
         return res.status(201).json({
             status: "success",
             code: 200,
             message: 'Berhasil Register',
-            data: createUser
+            data: createUser, 
 
         })
         

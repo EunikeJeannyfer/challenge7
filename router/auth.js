@@ -36,6 +36,24 @@ router.get('/resetPassword/:token', (req, res) => {
     res.render('resetPassword.ejs', { token })
 })
 
+router.get('/savePassword/:token', (req, res) => {
+    const { token } = req.params
+    jwt.verify(token, JWT_SECRET_KEY, (err, decoded) => {
+        console.log(token)
+        if(err){
+            return res.status(401).json({
+                status: 'failed',
+                message: 'you\'re not authorized!',
+                err: err.message,
+            })
+        }
+        req.user = decoded;
+        next()
+    })
+
+    res.render('dashboard.ejs')
+})
+
 router.post('/login', passport.authenticate('local', {
     successRedirect: '/dashboard',
     failureRedirect: '/login'

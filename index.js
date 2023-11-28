@@ -18,6 +18,9 @@ const morgan = require('morgan')
 const Sentry = require('@sentry/node')
 const { ProfilingIntegration } = require("@sentry/profiling-node")
 
+const http = require('http').Server(app)
+const io = require('./utils/io')(http)
+
 //untuk handle post req.body (middleware)
 app.use(express.json())
 app.use(express.urlencoded({ extended:false })) //req.body untuk form dataa
@@ -41,6 +44,11 @@ app.set("views", path.join(__dirname, './app//view'))
 
 app.use(routers)
 app.use('/docs', swaggerUI.serve, swaggerUI.setup(swaggerJSON))
+
+app.use((req, res, next) => {
+    req.io = io
+    return next()
+})
 
 //SENTRY.IO
 Sentry.init({

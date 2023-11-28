@@ -66,6 +66,8 @@ module.exports = {
         //coba buat fungsi register dengan menganti password 
         //dari req.body dengan password yang sudah terinkripsi
 
+        req.io.emit('notification', 'Berhasil Register')
+
         const {email, password, nama} = req.body;
         const user = await prisma.user.findFirst({
             where: { email }
@@ -92,7 +94,6 @@ module.exports = {
                 }
             }
         })
-        req.io.emit('notification', 'Berhasil Register')
         return res.status(201).json({
             status: "success",
             code: 200,
